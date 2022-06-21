@@ -13,7 +13,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     catagory=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='Product_catagory')
-    name=models.CharField(max_length=80)
+    name=models.CharField(max_length=80, null=True)
     slug=models.SlugField(max_length=80, unique=True)
     description=models.TextField()
     Product_img=models.ImageField(upload_to='shop/images/Product/')
@@ -24,7 +24,7 @@ class Product(models.Model):
     update_date=models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return self.name +"-"+ self.slug
+        return self.name +"------"+ self.slug
     
     class Meta:
         ordering=['-published_date',]
