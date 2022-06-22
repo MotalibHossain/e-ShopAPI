@@ -46,6 +46,7 @@ INSTALLED_APPS = [
 
     # install app
     'App_shop.apps.AppShopConfig',
+    'store.apps.StoreConfig',
 
 ]
 
@@ -64,7 +65,7 @@ ROOT_URLCONF = 'config.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR/'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
