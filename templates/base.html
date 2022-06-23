@@ -44,6 +44,9 @@
     <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
     <!-- Modernizr js -->
     <script src="{% static 'js/vendor/modernizr-2.8.3.min.js' %}"></script>
+    <!-- Main css file-->
+    <link rel="stylesheet" type="text/css" href="{% static 'store/css/main.css' %}">
+
 </head>
 
 <body>
@@ -470,6 +473,7 @@
 
 
 
+
         <!-- Begin Slider With Category Menu Area -->
         <div class="slider-with-banner">
             <div class="container">
@@ -483,7 +487,11 @@
                             </div>
                             <div id="cate-toggle" class="category-menu-list">
                                 <ul>
-                                    <li class="right-menu"><a href="shop-left-sidebar.html">Laptops</a>
+                                    {% for category in all_category %}
+                                    <li><a href="#">{{category.name}}</a></li>
+                                    {% endfor %}
+
+                                    <!-- <li class="right-menu"><a href="shop-left-sidebar.html">Laptops</a>
                                         <ul class="cat-mega-menu">
                                             <li class="right-menu cat-mega-title">
                                                 <a href="shop-left-sidebar.html">Prime Video</a>
@@ -589,6 +597,7 @@
                                             </li>
                                         </ul>
                                     </li>
+                                    
                                     <li><a href="#">Cameras</a></li>
                                     <li><a href="#">Headphone</a></li>
                                     <li><a href="#">Smartwatch</a></li>
@@ -599,7 +608,7 @@
                                     <li class="rx-parent">
                                         <a class="rx-default">More Categories</a>
                                         <a class="rx-show">Less Categories</a>
-                                    </li>
+                                    </li> -->
                                 </ul>
                             </div>
                         </div>
@@ -607,8 +616,9 @@
                     </div>
                     <!-- Category Menu Area End Here -->
 
-                    {% block content %}
-                    {% endblock content %}
+                    {% block body %}
+
+                    {% endblock %}
 
 
                     <!-- Begin Footer Area -->
