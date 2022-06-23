@@ -1,5 +1,5 @@
 <center>
-<h1>MH Ecommerce Website</h1>
+<h1>e-ShopAPI</h1>
 <hr>
 </center>
 
