@@ -487,91 +487,39 @@
                             </div>
                             <div id="cate-toggle" class="category-menu-list">
                                 <ul>
-                                    {% for category in all_category %}
-                                    <li><a href="#">{{category.name}}</a></li>
-                                    {% endfor %}
+                                    
+                                    <!-- {% for category in all_category %}
+                                        <li class="right-menu"><a href="shop-left-sidebar.html">{{category.name}}</a>
+                                            <ul class="cat-mega-menu">
+                                                <li class="right-menu cat-mega-title">
+                                                    <a href="shop-left-sidebar.html">All {{category.name}} Product</a>
 
-                                    <!-- <li class="right-menu"><a href="shop-left-sidebar.html">Laptops</a>
+                                                    {% for subcategory in category.SubCategory_set.all %}
+                                                    <ul>
+                                                        <li><a href="#">{{subcategory.name}}</a></li>
+                                                    </ul>
+                                                    {% endfor %}
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    {% endfor %} -->
+
+                                    {% for category in all_category %}
+                                    <li class="right-menu"><a href="shop-left-sidebar.html">{{category.name}}</a>
                                         <ul class="cat-mega-menu">
                                             <li class="right-menu cat-mega-title">
-                                                <a href="shop-left-sidebar.html">Prime Video</a>
+                                                <a href="shop-left-sidebar.html">{{category.name}}'s Sub Category</a>
                                                 <ul>
-                                                    <li><a href="#">All Videos</a></li>
-                                                    <li><a href="#">Blouses</a></li>
-                                                    <li><a href="#">Evening Dresses</a></li>
-                                                    <li><a href="#">Summer Dresses</a></li>
-                                                    <li><a href="#">T-shirts</a></li>
-                                                    <li><a href="#">Rent or Buy</a></li>
-                                                    <li><a href="#">Your Watchlist</a></li>
-                                                    <li><a href="#">Watch Anywhere</a></li>
-                                                    <li><a href="#">Getting Started</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="right-menu cat-mega-title">
-                                                <a href="shop-left-sidebar.html">Computers</a>
-                                                <ul>
-                                                    <li><a href="#">More to Explore</a></li>
-                                                    <li><a href="#">TV & Video</a></li>
-                                                    <li><a href="#">Audio & Theater</a></li>
-                                                    <li><a href="#">Camera, Photo</a></li>
-                                                    <li><a href="#">Cell Phones</a></li>
-                                                    <li><a href="#">Headphones</a></li>
-                                                    <li><a href="#">Video Games</a></li>
-                                                    <li><a href="#">Wireless Speakers</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="right-menu cat-mega-title">
-                                                <a href="shop-left-sidebar.html">Electronics</a>
-                                                <ul>
-                                                    <li><a href="#">Amazon Home</a></li>
-                                                    <li><a href="#">Kitchen & Dining</a></li>
-                                                    <li><a href="#">Furniture</a></li>
-                                                    <li><a href="#">Bed & Bath</a></li>
-                                                    <li><a href="#">Appliances</a></li>
+                                                    <!-- Must be write small letter your subcategory's model name -->
+                                                    {% for subcategory in category.subcategory_set.all %}
+                                                        <li><a href="#">{{subcategory.name}}</a></li>
+                                                    {% endfor %}
                                                 </ul>
                                             </li>
                                         </ul>
                                     </li>
-                                    <li class="right-menu"><a href="shop-left-sidebar.html">TV & Audio</a>
-                                        <ul class="cat-mega-menu">
-                                            <li class="right-menu cat-mega-title">
-                                                <a href="shop-left-sidebar.html">Chamcham</a>
-                                                <ul>
-                                                    <li><a href="#">Office</a></li>
-                                                    <li><a href="#">Gaming</a></li>
-                                                    <li><a href="#">Chromebook</a></li>
-                                                    <li><a href="#">Refurbished</a></li>
-                                                    <li><a href="#">Touchscreen</a></li>
-                                                    <li><a href="#">Ultrabooks</a></li>
-                                                    <li><a href="#">Netbook</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="right-menu cat-mega-title">
-                                                <a href="shop-left-sidebar.html">Meito</a>
-                                                <ul>
-                                                    <li><a href="#">Hard Drives</a></li>
-                                                    <li><a href="#">Graphic Cards</a></li>
-                                                    <li><a href="#">Processors (CPU)</a></li>
-                                                    <li><a href="#">Memory</a></li>
-                                                    <li><a href="#">Motherboards</a></li>
-                                                    <li><a href="#">Fans & Cooling</a></li>
-                                                    <li><a href="#">CD/DVD Drives</a></li>
-                                                </ul>
-                                            </li>
-                                            <li class="right-menu cat-mega-title">
-                                                <a href="shop-left-sidebar.html">Sony Bravia</a>
-                                                <ul>
-                                                    <li><a href="#">Sound Cards</a></li>
-                                                    <li><a href="#">Cases & Towers</a></li>
-                                                    <li><a href="#">Casual Dresses</a></li>
-                                                    <li><a href="#">Evening Dresses</a></li>
-                                                    <li><a href="#">T-shirts</a></li>
-                                                    <li><a href="#">Tops</a></li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li class="right-menu"><a href="shop-left-sidebar.html">Smartphone</a>
+                                    {% endfor %}
+                                    <!-- <li class="right-menu"><a href="shop-left-sidebar.html">Smartphone</a>
                                         <ul class="cat-mega-menu cat-mega-menu-2">
                                             <li class="right-menu cat-mega-title">
                                                 <a href="shop-left-sidebar.html">Camera Accessories</a>
