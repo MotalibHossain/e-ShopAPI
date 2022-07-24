@@ -24,7 +24,7 @@ class SubCategory(models.Model):
 
 class Product(models.Model):
     catagory=models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='Product_catagory')
-    sub_category=models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    sub_category=models.ForeignKey(SubCategory, on_delete=models.CASCADE, null=True, blank=True)
     name=models.CharField(max_length=80, null=True)
     slug=models.SlugField(max_length=80, unique=True)
     description=models.TextField()

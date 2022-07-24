@@ -3194,12 +3194,14 @@ li.rx-parent a.rx-show::after {
     color: #fed700;
 }
 .cat-mega-menu {
-	width: 540px;
+	/* width: 540px; */
+	width: 100%;
 	padding: 4px 0 10px 0;
 	overflow: hidden;
 }
 li.right-menu .cat-mega-menu > li, li.right-menu .cat-mega-menu-2 > li {
-	width: 33.333%;
+	/* width: 33.333%; */
+	width: 100%;
 	float: left;
 	padding: 15px 20px 10px 30px;
 	list-style: none;
