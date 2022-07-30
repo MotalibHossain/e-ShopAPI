@@ -10,7 +10,7 @@
 5. the above command will install all packages required to run the project.
 6. run python manage.py migrate
 7. run python manage.py runserver
-8. go to http://127.0.0.1:8000/
+8. Go to http://127.0.0.1:8000/
 
 # Features:
 
