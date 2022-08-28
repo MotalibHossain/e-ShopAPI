@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     # install app
     'App_shop.apps.AppShopConfig',
     'App_store.apps.AppStoreConfig',
+    'App_UserProfile.apps.AppUserprofileConfig',
 
 ]
 
