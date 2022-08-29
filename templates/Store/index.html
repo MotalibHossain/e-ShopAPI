@@ -4,6 +4,90 @@
 
 
 {% block body %}
+<!-- Begin Category Menu Area -->
+<div class="col-lg-3">
+    <!--Category Menu Start-->
+    <div class="category-menu">
+        <div class="category-heading">
+            <h2 class="categories-toggle"><span>categories</span></h2>
+        </div>
+        <div id="cate-toggle" class="category-menu-list">
+            <ul>
+                
+                <!-- {% for category in all_category %}
+                    <li class="right-menu"><a href="shop-left-sidebar.html">{{category.name}}</a>
+                        <ul class="cat-mega-menu">
+                            <li class="right-menu cat-mega-title">
+                                <a href="shop-left-sidebar.html">All {{category.name}} Product</a>
+
+                                {% for subcategory in category.SubCategory_set.all %}
+                                <ul>
+                                    <li><a href="#">{{subcategory.name}}</a></li>
+                                </ul>
+                                {% endfor %}
+                            </li>
+                        </ul>
+                    </li>
+                {% endfor %} -->
+
+                {% for category in all_category %}
+                <li class="right-menu"><a href="shop-left-sidebar.html">{{category.name}}</a>
+                    <ul class="cat-mega-menu">
+                        <li class="right-menu cat-mega-title">
+                            <a href="shop-left-sidebar.html">{{category.name}}'s Sub Category</a>
+                            <ul>
+                                <!-- Must be write small letter your subcategory's model name -->
+                                {% for subcategory in category.subcategory_set.all %}
+                                    <li><a href="#">{{subcategory.name}}</a></li>
+                                {% endfor %}
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                {% endfor %}
+                <!-- <li class="right-menu"><a href="shop-left-sidebar.html">Smartphone</a>
+                    <ul class="cat-mega-menu cat-mega-menu-2">
+                        <li class="right-menu cat-mega-title">
+                            <a href="shop-left-sidebar.html">Camera Accessories</a>
+                            <ul>
+                                <li><a href="#">Octa Core</a></li>
+                                <li><a href="#">Quad Core</a></li>
+                                <li><a href="#">Dual Core</a></li>
+                                <li><a href="#">7.0 Screen</a></li>
+                                <li><a href="#">9.0 Screen</a></li>
+                                <li><a href="#">Bags & Cases</a></li>
+                            </ul>
+                        </li>
+                        <li class="right-menu cat-mega-title">
+                            <a href="shop-left-sidebar.html">XailStation</a>
+                            <ul>
+                                <li><a href="#">Batteries</a></li>
+                                <li><a href="#">Microphones</a></li>
+                                <li><a href="#">Stabilizers</a></li>
+                                <li><a href="#">Video Tapes</a></li>
+                                <li><a href="#">Memory Card Readers</a></li>
+                                <li><a href="#">Tripods</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                
+                <li><a href="#">Cameras</a></li>
+                <li><a href="#">Headphone</a></li>
+                <li><a href="#">Smartwatch</a></li>
+                <li><a href="#">Out Door Room</a></li>
+                <li><a href="#">Chamcham</a></li>
+                <li class="rx-child"><a href="#">Mobile & Tablets</a></li>
+                <li class="rx-child"><a href="#">Accessories</a></li>
+                <li class="rx-parent">
+                    <a class="rx-default">More Categories</a>
+                    <a class="rx-show">Less Categories</a>
+                </li> -->
+            </ul>
+        </div>
+    </div>
+
+</div>
 
 
 <!-- Begin Slider Area -->
