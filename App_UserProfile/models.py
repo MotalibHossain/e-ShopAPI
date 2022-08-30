@@ -12,8 +12,8 @@ class UserProfile(models.Model):
     email = models.EmailField(max_length=30, blank=False)
     phone = models.CharField(max_length=15, blank=False)
     image = models.ImageField(upload_to="UserProfile/", default='UserProfile/profile.png')
-    description = models.CharField(max_length=150, blank=True)
-    address = models.CharField(max_length=20, blank=True)
+    description = models.CharField(max_length=150, blank=True, null=True)
+    address = models.CharField(max_length=20, blank=True, null=True)
     otp=models.CharField(max_length=25, unique=True)
 
 
