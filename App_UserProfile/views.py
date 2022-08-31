@@ -37,6 +37,8 @@ def UserRegister(request):
             if(username  != None or email != None or phone != None or password != None):
                 messages.success(request, 'opps 😎! Please, Fillup your all information.That are very inportant information to create your account')
                 return render(request, 'Userprofile/register.html')
+
+                
             # Check username  already exits or not
             exist_username = User.objects.filter(username=username).first()
             if(exist_username):
