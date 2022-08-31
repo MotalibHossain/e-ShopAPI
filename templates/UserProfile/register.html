@@ -4,7 +4,7 @@
 {% load static %}
 <title>Login</title>
 <style>
-    body{
+    body {
         background: #ebeaea !important;
     }
 </style>
@@ -16,7 +16,24 @@
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
             </div>
-            <div class="col-sm-12 col-md-8 col-lg-8 mb-30 alert alert-info text-center">{{message}}</div>
+            {% if messages %}
+            {% for message in messages %}
+            <div class="col-sm-12 col-md-8 col-lg-8">
+                <div class="alert alert-warning alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</strong>
+                </div>
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <!-- {% if messages %}
+                <div class="col-sm-12 col-md-8 col-lg-8 mb-30 alert alert-info text-center">
+                    {% for message in messages %}
+                    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                    {% endfor %}
+                </div>
+            {% endif %} -->
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
@@ -52,8 +69,7 @@
                                 <input class="mb-0" type="password" name="confPassword" placeholder="Confirm Password">
                             </div>
                             <div class="col-12">
-                                <!-- <button type="submit" class="register-button mt-0">Register</button> -->
-                                <button type="submit">Register</button>
+                                <button type="submit" class="register-button mt-0">Register</button>
                             </div>
                         </div>
                     </div>

@@ -11,12 +11,20 @@
         <div class="row">
             <div class="col-sm-12 col-md-3 col-lg-3">
             </div>
-            <div class="col-sm-12 col-md-8 col-lg-8 mb-30 alert alert-info text-center">{{message}}</div>
         </div>
         <div class="row ">
             <div class="col-sm-12 col-md-4 col-lg-4">
             </div>
+
             <div class="col-sm-12 col-md-8 col-lg-8 mb-30">
+                {% if messages %}
+                {% for message in messages %}
+                <div {% if message.tags %} class="alert alert-{{ message.tags }} alert-dismissible fade show" {% endif%}>
+                    <button type="button" class="close" data-dismiss="alert">&times;</button>
+                    <strong {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</strong>
+                </div>
+                {% endfor %}
+                {% endif %}
                 <!-- Login Form s-->
                 <form action="#" id="login-form">
                     <div class="login-form">
