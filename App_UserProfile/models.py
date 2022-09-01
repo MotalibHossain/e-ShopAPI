@@ -15,6 +15,7 @@ class UserProfile(models.Model):
     description = models.CharField(max_length=150, blank=True, null=True)
     address = models.CharField(max_length=20, blank=True, null=True)
     otp=models.CharField(max_length=25, unique=True)
+    # is_varified=models.BooleanField(default=False)
 
 
     def __str__(self):
