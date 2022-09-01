@@ -8,14 +8,14 @@ from django.urls import reverse_lazy, reverse
 # thirdparti library
 import uuid
 from django.contrib import messages
+from django.conf import settings
+from django.core.mail import send_mail
 
 # models import
 from django.contrib.auth.models import User
 from App_UserProfile.models import UserProfile
 
 # Create your views here.
-
-
 def Userlogin(request):
     return render(request, 'Userprofile/login.html')
 
@@ -34,9 +34,9 @@ def UserRegister(request):
         otp = str(uuid.uuid4())
 
         try:
-            if(username  != None or email != None or phone != None or password != None):
-                messages.success(request, 'opps 😎! Please, Fillup your all information.That are very inportant information to create your account')
-                return render(request, 'Userprofile/register.html')
+            # if(username  != None or email != None or phone != None or password != None):
+            #     messages.success(request, 'opps 😎! Please, Fillup your all information.That are very inportant information to create your account')
+            #     return render(request, 'Userprofile/register.html')
 
                 
             # Check username  already exits or not
@@ -76,6 +76,7 @@ def UserRegister(request):
                 otp=otp 
                 )
             profile.save()
+            Send_Mail_Varification(email, otp)
             messages.success(request, "Successfully register")
             return redirect(reverse_lazy('App_UserProfile:login'))
         except Exception as e:
@@ -88,4 +89,12 @@ def UserRegister(request):
 
 def Profile(request):
     return HttpResponse("User Profile")
+
+
+def Send_Mail_Varification(email , token):
+    subject = 'Your accounts need to be verified'
+    message = f'Hi paste the link to verify your account http://127.0.0.1:8000/verify/{token}'
+    email_from = settings.EMAIL_HOST_USER
+    recipient_list = [email]
+    send_mail(subject, message , email_from ,recipient_list )
 

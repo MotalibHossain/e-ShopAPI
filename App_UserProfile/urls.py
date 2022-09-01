@@ -10,5 +10,6 @@ urlpatterns = [
     path('user/', Profile, name ='profile' ),
     path('login/', Userlogin, name ='login' ),
     path('registration/', UserRegister, name ='UserRegister' ),
+    path('verify/<otp>', UserRegister, name ='verify' ),
 
 ]+static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
