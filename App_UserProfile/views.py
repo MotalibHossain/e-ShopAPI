@@ -90,6 +90,18 @@ def UserRegister(request):
 def Profile(request):
     return HttpResponse("User Profile")
 
+def Verify(request, otp):
+    profile_verified=UserProfile.objects.filter(otp=otp).first()
+
+    if profile_verified:
+        if profile_verified.is_varified == True:
+            messages.success(request, "👍 > Your account already varified.Please login.")
+            return redirect(reverse_lazy('App_UserProfile:login'))
+        else:
+            profile_verified.is_varified=True
+            profile_verified.save()
+            messages.success(request, 'Check your mail and verify your account then login')
+            return redirect(reverse_lazy('App_UserProfile:login'))
 
 def Send_Mail_Varification(email , token):
     subject = 'Your accounts need to be verified'
