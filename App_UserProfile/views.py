@@ -1,9 +1,8 @@
 
-from multiprocessing import context
-import profile
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.urls import reverse_lazy, reverse
+from django.contrib.auth import login, logout, authenticate
 
 # thirdparti library
 import uuid
@@ -17,6 +16,35 @@ from App_UserProfile.models import UserProfile
 
 # Create your views here.
 def Userlogin(request):
+    if request.method == "POST":
+        username=request.POST.get('username')
+        password=request.POST.get('password')
+
+        user=User.objects.filter(username=username).first()
+
+        if user is not None:
+            profile=UserProfile.objects.filter(user=user).first()
+            if profile.is_varified == True:
+                user_password_authenticate=authenticate(username=username, password=password)
+
+                if user_password_authenticate is not None:
+                    login(request, user)
+                    return redirect(reverse_lazy("App_store:home"))
+                else:
+                    messages.warning(request, "Password is incorrect.Please enter your valid password")
+                    return redirect(reverse_lazy("App_UserProfile:login"))
+            else:
+                messages.error(request, "Your profile isn't verified.Please, Check your mail and verified your account first")
+                return render(request, 'Userprofile/login.html')
+        else:
+            messages.warning(request, "User is not found")
+            return redirect(reverse_lazy("App_UserProfile:login"))
+
+
+
+
+
+
     return render(request, 'Userprofile/login.html')
 
 
@@ -77,7 +105,7 @@ def UserRegister(request):
                 )
             profile.save()
             Send_Mail_Varification(email, otp)
-            messages.success(request, "Successfully register")
+            messages.success(request, "Successfully registration complete.Please, check your mail and verify your account")
             return redirect(reverse_lazy('App_UserProfile:login'))
         except Exception as e:
             messages.success(request, e)
@@ -86,9 +114,13 @@ def UserRegister(request):
             
     return render(request, 'Userprofile/register.html')
 
+def logoutView(request):
+    logout(request)
+    return redirect(reverse_lazy("App_store:home"))
+
 
 def Profile(request):
-    return HttpResponse("User Profile")
+    return render(request, 'Userprofile/profile.html')
 
 def Verify(request, otp):
     profile_verified=UserProfile.objects.filter(otp=otp).first()
@@ -100,7 +132,7 @@ def Verify(request, otp):
         else:
             profile_verified.is_varified=True
             profile_verified.save()
-            messages.success(request, 'Check your mail and verify your account then login')
+            messages.success(request, 'Successfully verified your account. Now you can login')
             return redirect(reverse_lazy('App_UserProfile:login'))
 
 def Send_Mail_Varification(email , token):
