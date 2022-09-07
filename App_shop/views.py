@@ -34,6 +34,21 @@ def Home(request):
         else:
             return Response(serializer.errors)
 
+@api_view(['GET', 'PUT'])
+def CategoryUpdate(request, pk):
+    if request.method == 'GET':
+        updatecategory=Category.objects.filter(pk=pk)
+        serializer = CategorySerializer(updatecategory,  many=True)
+        return Response(serializer.data)
+
+    if request.method == 'PUT':
+        update_category = CategorySerializer(data=request.data)
+        if update_category.is_valid():
+            update_category.save()
+            return Response(update_category.data)
+        else:
+            return Response(update_category.errors)
+
 
 @api_view(['GET', 'POST'])
 def productView(request):
@@ -48,3 +63,20 @@ def ProductDetailsView(request, pk):
     # product_details=Product.objects.get(pk=pk) //show problem when get product
     serializer = ProductSerializer(product_details,  many=True)
     return Response(serializer.data)
+
+@api_view(['GET', 'PUT'])
+def ProductUpdate(request, pk):
+    if request.method =='GET':
+        update_product=Product.objects.filter(pk=pk)
+        serializer = ProductSerializer(update_product,  many=True)
+        return Response(serializer.data)
+
+    if request.method == 'PUT':
+        update_serializer=ProductSerializer(data=request.data)
+        if update_serializer.is_valid():
+            return Response(update_serializer.data)
+        else:
+            return Response(update_serializer.errors)
+
+
+
