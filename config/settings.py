@@ -28,7 +28,11 @@ SECRET_KEY = 'django-insecure-p4_t^www1azjmgdbt^=ss&yx!94&o)^@)nok)shn6j_9=(k(q9
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
+
+# SECURITY WARNING: don't run with CORS-allow-all turned on in production, use whitelist!
+CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_WHITELIST = ('https://www.hourly-finder.com/')
 
 
 # Application definition
@@ -44,6 +48,7 @@ INSTALLED_APPS = [
 
     # Framework and libraryes
     'rest_framework',
+    'corsheaders',
 
 
     # install app
@@ -55,6 +60,10 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    # CORS Headers
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    ##
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -130,7 +139,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS  = [BASE_DIR/"static"]
+STATICFILES_DIRS = [BASE_DIR/"static"]
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR/'media')
@@ -141,14 +150,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR/'media')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-
-# Message library 
+# Message library
 MESSAGE_TAGS = {
     messages.WARNING: 'danger',
     messages.ERROR: 'danger',
 }
 
-# SMTP mail sending 
+# SMTP mail sending
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_USE_TLS = True

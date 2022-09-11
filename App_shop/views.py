@@ -20,7 +20,10 @@ from App_shop.models import Category, Product
 
 @api_view(['GET', 'POST'])
 def Home(request):
-     
+    if request.method == 'GET':
+        updatecategory = Category.objects.all()
+        serializer = CategorySerializer(updatecategory,  many=True)
+        return Response(serializer.data)
 
 
     if request.method == 'POST':
