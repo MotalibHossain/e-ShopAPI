@@ -32,3 +32,26 @@ class Product(models.Model):
 
     class Meta:
         ordering = ['-published_date', ]
+# ---------------------------------------#- Blog post models -----------------------------------------
+class BlogCategory(models.Model):
+    name = models.CharField(max_length=20)
+
+    def __str__(self):
+        return self.name
+
+
+
+class Articel(models.Model):
+    catagory = models.ForeignKey(BlogCategory, on_delete=models.SET_NULL, null=True, related_name='Blog_catagory')
+    name = models.CharField(max_length=80, null=True)
+    slug = models.SlugField(max_length=80, unique=True)
+    description = models.TextField()
+    is_active = models.BooleanField(default=True)
+    published_date = models.DateField(auto_now_add=True)
+    update_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return self.name + "------" + self.slug
+
+    class Meta:
+        ordering = ['-published_date', ]

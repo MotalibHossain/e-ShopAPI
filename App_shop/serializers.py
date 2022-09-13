@@ -1,7 +1,7 @@
 from unittest.util import _MAX_LENGTH
 from rest_framework import serializers
 from drf_extra_fields.fields import Base64ImageField
-from App_shop.models import Category, Product
+from App_shop.models import Category, Product, BlogCategory, Articel
 
 class CategorySerializer(serializers.Serializer):
     id=serializers.CharField(read_only=True)
@@ -40,3 +40,20 @@ class ProductSerializer(serializers.Serializer):
         instance.update_date = validated_data.get('update_date', instance.update_date)
         instance.save()
         return instance
+    
+# ===============================================================================================
+#                                SERIALIZERS FOR BLOG POST
+# ================================================================================================
+class ArticelSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Articel
+        fields = '__all__'
+
+
+class BlogCategorySerializer(serializers.ModelSerializer):
+    Blog_catagory=ArticelSerializer(many=True, read_only=True)
+    # Blog_catagory=ArticelSerializer()
+
+    class Meta:
+        model = BlogCategory
+        fields = '__all__'
