@@ -11,9 +11,9 @@ from django.views import View
 # API import
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-from App_shop.serializers import CategorySerializer, ProductSerializer
+from App_shop.serializers import CategorySerializer, ProductSerializer, ArticelSerializer, BlogCategorySerializer
 
-from App_shop.models import Category, Product
+from App_shop.models import Articel, Category, Product, BlogCategory
 
 # Create your views here.
 
@@ -77,6 +77,28 @@ def ProductUpdate(request, pk):
             return Response(update_serializer.data)
         else:
             return Response(update_serializer.errors)
+
+# =============================================================
+#                         VIEWS FOR BLOG 
+# =============================================================
+@api_view(['GET', 'POST'])
+def BlogArticel(request):
+    if request.method == 'GET':
+        all_post=Articel.objects.all()
+        serializer=ArticelSerializer(all_post, many=True)
+        return Response(serializer.data)
+    else:
+       return Response(serializer.errors)
+
+
+@api_view(['GET', 'POST'])
+def BlogCategorys(request):
+    if request.method == 'GET':
+        all_Category=BlogCategory.objects.all()
+        serializer=BlogCategorySerializer(all_Category, many=True)
+        return Response(serializer.data)
+    else:
+       return Response(serializer.errors)
 
 
 
