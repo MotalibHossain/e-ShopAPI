@@ -51,7 +51,7 @@ class ArticelSerializer(serializers.ModelSerializer):
 
 
 class BlogCategorySerializer(serializers.ModelSerializer):
-    Blog_catagory=ArticelSerializer(many=True, read_only=True)
+    Blog_Article=ArticelSerializer(many=True, read_only=True)
     # Blog_catagory=ArticelSerializer()
 
     class Meta:
