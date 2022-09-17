@@ -57,3 +57,6 @@ class BlogCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = BlogCategory
         fields = '__all__'
+
+    def create(self, validated_data):
+        return BlogCategory.objects.create(**validated_data)
