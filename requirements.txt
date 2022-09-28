@@ -1,10 +1,16 @@
+aiosmtpd==1.4.2
 asgiref==3.5.2
+atpublic==3.1
+attrs==22.1.0
 autopep8==1.6.0
 Django==4.0.5
+django-cors-headers==3.13.0
 django-jazzmin==2.5.0
 djangorestframework==3.13.1
+drf-extra-fields==3.4.0
 Pillow==9.1.1
 pycodestyle==2.8.0
+Pygments==2.13.0
 pytz==2022.1
 sqlparse==0.4.2
 toml==0.10.2
